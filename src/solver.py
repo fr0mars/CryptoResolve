@@ -1,5 +1,4 @@
-from Crypto.Util.number import long_to_bytes, bytes_to_long, inverse
-import RSA
+from src.RSA import RSA
 import DHKE
 import ECC
 
