@@ -5,18 +5,13 @@ from Crypto.Util.number import inverse, long_to_bytes, bytes_to_long
 # Baby Step Giant Step algorithm to solve the DLP on small values
 
 
-def BSGS(g, N, B):
-    m = math.ceil(math.sqrt(N))
-    table = []
+def BSGS(g, B, N):
+
+    m = math.ceil(math.sqrt(N - 1))
+    table = {pow(g, i, N): i for i in range(m)}
+    c = pow(g, m * (N - 2), N)
     for j in range(m):
-        table.append(j, (pow(g, j, N)))
-    inv = pow(g, -m, N)
-    y = B
-    for i in range(m):
-        if y == table[i][1]:
-            return i*m + table[i][0]
-        else:
-            y = y * inv
-
-
+        y = (B * pow(c, j, N)) % N
+        if y in table:
+            return j * m + table[y]
 
