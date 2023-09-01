@@ -1,5 +1,5 @@
 from src.RSA import RSA
-import DHKE
+from src.DHKE import DHKE
 import ECC
 
 
