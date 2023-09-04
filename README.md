@@ -7,3 +7,6 @@
   ## RSA
   ### - Fermat factorization attack on the Modulus
   ### - Wiener attack on small private keys
+
+  ## Diffie-Hellman
+  ### - Bruteforce on small keys with Baby Step Giant Step algorithm.
