@@ -1,5 +1,5 @@
-from src.RSA import RSA
-from src.DHKE import DHKE
+from RSA import RSA_main
+from DHKE import DHKE_main
 import ECC
 
 
@@ -8,11 +8,11 @@ def main():
     print("Welcome To CryptoResolve, a tool to test your use of different Cryptosystems.\n")
     chosen = input("Which cryptosytem/key exchange method do you want to analyze?\nOptions available are : RSA, ECC, DHKE.\nChoice:  ")
     if chosen in ["RSA", "Rsa", "rsa"]:
-        RSA.test_parameters()
+        RSA_main.parameters()
     elif chosen in ["DHKE", "Dhke", "dhke"]:
-        DHKE.test_parameters()
+        DHKE_main.parameters()
     elif chosen in ["ECC", "Ecc", "ecc"]:
-        ECC.test_parameters()
+        ECC.parameters()
     else:
         print("Error: This is not a supported input")
 

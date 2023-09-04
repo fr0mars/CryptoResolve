@@ -1,10 +1,11 @@
-from Crypto.Util.number import inverse, bytes_to_long, long_to_bytes, isPrime
+from Crypto.Util.number import inverse, isPrime
 import math
-from src.RSA import FERMAT
-from src.RSA import WIENER
+from RSA.WIENER  import wiener_attack
+from RSA.FERMAT import fermat
 
 
-def test_parameters():
+
+def parameters():
     print()
     print("Getting your RSA parameters...")
     mod = input("What is your Modulus (decimal input) ?\nModulus:  ")
@@ -37,10 +38,10 @@ def check_params(N, e):
             print("In fact, your exponent is not even invertible in the given Modulus\n")
         return
     print("Testing custom Wiener attack...")
-    if WIENER.wiener_attack(N,e):
+    if wiener_attack(N,e):
         return
     print("Testing Fermat Factorization...")
-    if FERMAT.fermat(N, e):
+    if fermat(N, e):
         return
     print()
     print("Your parameters were strong enough to pass CryptoResolve!\nBut always be careful when using RSA!")

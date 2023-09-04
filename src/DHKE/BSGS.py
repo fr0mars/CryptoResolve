@@ -1,5 +1,5 @@
 import math
-from Crypto.Util.number import inverse, long_to_bytes, bytes_to_long
+
 
 
 # Baby Step Giant Step algorithm to solve the DLP on small values
