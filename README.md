@@ -10,3 +10,7 @@
 
   ## Diffie-Hellman
   ### - Bruteforce on small keys with Baby Step Giant Step algorithm.
+
+# Incoming ...
+  ### - Support for message decryption
+  ### - Attack on multiple message with low exponent (CRT)
