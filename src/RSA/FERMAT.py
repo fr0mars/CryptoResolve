@@ -1,7 +1,7 @@
-from Crypto.Util.number import inverse
+from Crypto.Util.number import inverse, long_to_bytes
 import math
 
-def fermat(N, e):
+def fermat(N, e, m):
     def is_perfect_square(n):
         """
          quick test to know if an integer n is a perfect square
@@ -32,7 +32,10 @@ def fermat(N, e):
         phi = (p-1)*(q-1)
         try:
             d = inverse(e, phi)
+            plain = pow(m,d,N)
             print(f"Euler totient = {phi}\nPrivate key = {d}\n")
+            print(f"decrypted message in decimal output= {plain}")
+            print(f"decrypted message in bytes output= {long_to_bytes(plain)}")
         except ValueError:
             print(f"Euler totient = {phi}")
             print("Also found that your exponent was not invertible in the given modulus\n")

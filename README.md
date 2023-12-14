@@ -12,5 +12,4 @@
   ### - Bruteforce on small keys with Baby Step Giant Step algorithm. (09/23)
 
 # Incoming ...
-  ### - Support for message decryption (12/23)
   ### - Attack on multiple message with low exponent (CRT) (12/23)

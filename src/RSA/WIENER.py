@@ -1,7 +1,7 @@
+from Crypto.Util.number import long_to_bytes
 
 
-
-def wiener_attack(N,e):
+def wiener_attack(N,e, m):
     def cf_expansion(n, d):
         e = []
 
@@ -45,5 +45,9 @@ def wiener_attack(N,e):
     if privatekey != 1:
         print()
         print(f"Wiener attack was successful because your private key is too small\nPrivate key = {privatekey}")
+        plain = pow(m,privatekey, N)
+        print(f"decrypted message in decimal output= {plain}")
+        print(f"decrypted message in bytes output= {long_to_bytes(plain)}")
         return True
     return False
+
