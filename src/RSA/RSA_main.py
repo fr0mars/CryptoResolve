@@ -6,26 +6,47 @@ from RSA.FERMAT import fermat
 
 
 def parameters():
+
     print()
     print("Getting your RSA parameters...")
-    mod = input("What is your Modulus (decimal input) ?\nModulus:  ")
-    try:
-        modulus = int(mod)
-    except ValueError:
-        print("Error: Invalid Modulus Format")
+    multiple = input("Do you want to analyse multiple messages (y/n) ?\nAnswer:  ")
+    if multiple == 'y':
+        lst_mod = list(map(int,input("All the modulus separated by a space:  ").split()))
+        lst_exp = list(map(int,input("All the exponent separated by a space:  ").split()))
+        return multiple_messages(lst_mod, lst_exp)
+    elif multiple == 'n':
+        mod = input("What is your Modulus (decimal input) ?\nModulus:  ")
+        try:
+            modulus = int(mod)
+        except ValueError:
+            print("Error: Invalid Modulus Format")
+            return
+        exp = input("What is your public exponent (decimal input) ?\nExponent:  ")
+        try:
+            exponent = int(exp)
+        except ValueError:
+            print("Error: Invalid Exponent Format")
+            return
+        print()
+        print("Public key successfully received!")
+        print("Testing your parameters...\n")
+        return check_params(modulus,exponent)
+    else:
+        print("Error: Invalid Answer")
         return
-    exp = input("What is your public exponent (decimal input) ?\nExponent:  ")
-    try:
-        exponent = int(exp)
-    except ValueError:
-        print("Error: Invalid Exponent Format")
+    
+def multiple_messages(lst_mod, lst_exp):
+    nb_modulus = len(lst_mod)
+    nb_exp = len(lst_exp)
+    if nb_exp != nb_modulus:
+        print("You should have the same number of Modulus and exponent")
         return
-    print()
-    print("Public key successfully received!")
-    print("Testing your parameters...\n")
-    return check_params(modulus,exponent)
+    print("Individually Testing every parameters...\n")
+    for i in range(nb_exp):
+        check_params(lst_mod[i], lst_exp[i])
+    return
 
-
+    return
 def check_params(N, e):
     print("Testing primality of the Modulus...")
     if isPrime(N):
